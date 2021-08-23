@@ -14,9 +14,12 @@
 <body>
     <section>
         <div class="create_container">
-            <input class="create_input" type="text" placeholder="Напишите сюда новую задачу">
+            <form action="{% url 'add-todo' %} " method="POST">
+                {% csrf_token %}
+                <input class="create_input" type="text" name="todo_text" placeholder="Напишите сюда новую задачу">
 
-            <button class="create_button">Дбавить</button>
+                <button class="create_button">Дбавить</button>
+            </form>
         </div>
 
         <div class="todo_container">
@@ -33,8 +36,8 @@
                 <div class="todo_item_footer">
                     <p>{{todo.created_at}}</p>
                     <div class="action_buttons">
-                        <img src="./icons/16666.png">
-                        <img src="./icons/fill-icon-28.jpg" />
+                        <img src="{%static './icons/16666.png'%}">
+                        <img src="{% static './icons/fill-icon-28.jpg'%}" />
 
                     </div>
                 </div>
